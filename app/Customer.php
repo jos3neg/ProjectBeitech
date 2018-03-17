@@ -7,6 +7,8 @@ use App\Order;
 use App\Product;
 class Customer extends Model
 {
+    public $timestamps = false;
+    
     protected $fillable = [
         "name", "email",
     ];

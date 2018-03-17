@@ -7,6 +7,8 @@ use App\Customer;
 use App\OrderDetail;
 class Order extends Model
 {
+    public $timestamps = false;
+    
     protected $fillable = [
         "customer_id", "creation_date", "delivery_address",
     ];
