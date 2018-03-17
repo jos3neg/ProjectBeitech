@@ -14,12 +14,6 @@ class OrderDetailController extends Controller
     }
 
 /********************************************/
-    public function create()
-    {
-        //
-    }
-
-/********************************************/
     public function store(Request $request)
     {
         //
@@ -27,12 +21,6 @@ class OrderDetailController extends Controller
 
 /********************************************/
     public function show(OrderDetail $orderDetail)
-    {
-        //
-    }
-
-/********************************************/
-    public function edit(OrderDetail $orderDetail)
     {
         //
     }

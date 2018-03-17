@@ -14,12 +14,6 @@ class CustomerController extends Controller
     }
 
 /********************************************/
-    public function create()
-    {
-        //
-    }
-
-/********************************************/
     public function store(Request $request)
     {
         //
@@ -27,11 +21,6 @@ class CustomerController extends Controller
 
 /********************************************/
     public function show(Customer $customer)
-    {
-        //
-    }
-/********************************************/
-    public function edit(Customer $customer)
     {
         //
     }

@@ -13,13 +13,7 @@ class ProductController extends Controller
         //
     }
 
-/*********************************************/
-    public function create()
-    {
-        //
-    }
-
-/*********************************************/
+    /*********************************************/
     public function store(Request $request)
     {
         //
@@ -27,12 +21,6 @@ class ProductController extends Controller
 
 /*********************************************/
     public function show(Product $product)
-    {
-        //
-    }
-
-/*********************************************/
-    public function edit(Product $product)
     {
         //
     }
