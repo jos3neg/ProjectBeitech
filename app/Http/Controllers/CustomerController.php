@@ -11,7 +11,7 @@ class CustomerController extends Controller
     public function index()
     {
         $customers = Customer::all();
-        return response()->json(['data' => $customers],200);
+        return response()->json(['data' => $customers,'message' => 'Lista de Clientes'],200);
     }
 
 /********************************************/
@@ -23,10 +23,12 @@ class CustomerController extends Controller
         ];
 
         $this->validate($request, $rules);
+        $customer = new Customer;
+        $customer->name = $request->name;
+        $customer->email = $request->email;
+        $customer->save();
 
-        $customer = Customer::create($request->all());
-
-        return response()->json(['data' => $customer], 201);
+        return response()->json(['data' => $customer, 'message' => 'Cliente Registrado'], 201);
     }
 
 /********************************************/
@@ -34,7 +36,7 @@ class CustomerController extends Controller
     {
         $customer_find = Customer::findOrFail($customer->id);
 
-        return response()->json(['data' => $customer_find],200);
+        return response()->json(['data' => $customer_find, 'message' => 'Mostrando Cliente'],200);
     }
 
 /********************************************/
@@ -59,7 +61,7 @@ class CustomerController extends Controller
 
         $customer->save();
 
-        return response()->json(['data' => $customer] ,200);
+        return response()->json(['data' => $customer, 'message' => 'Cliente Actualizado'] ,200);
     }
 
 /********************************************/
@@ -67,6 +69,6 @@ class CustomerController extends Controller
     {
         $customer_find = Customer::findOrFail($customer->id);
         $customer_find->delete();
-        return response()->json(['data' => $customer_find], 200);
+        return response()->json(['data' => $customer_find, 'message' => 'Cliente Eliminado'], 200);
     }
 }
