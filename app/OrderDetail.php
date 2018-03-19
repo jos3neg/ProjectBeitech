@@ -12,6 +12,8 @@ class OrderDetail extends Model
         "product_description", "price", "order_id",
     ];
 
+
+    // relations between models
     public function Order(){
         return $this->belonsTo(Order::class);
     }

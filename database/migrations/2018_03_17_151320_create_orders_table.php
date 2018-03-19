@@ -14,7 +14,7 @@ class CreateOrdersTable extends Migration
             $table->integer('customer_id')->unsigned();
             $table->date('creation_date');
             $table->string('delivery_address');
-
+            $table->double('total');
             $table->foreign('customer_id')->references('id')->on('customers');
         });
     }

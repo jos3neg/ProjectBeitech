@@ -19,4 +19,5 @@ use Illuminate\Http\Request;
 
 Route::apiResource('customers' , 'CustomerController');
 Route::apiResource('products' , 'ProductController');
-Route::apiResource('order' , 'OrderController');
+Route::post('/orders', 'OrderController@store');
+Route::post('/orders/bycustomer' , 'OrderController@index');

@@ -19,7 +19,7 @@ class ProductController extends Controller
     {
         $rules = [
             'name' => 'required',
-            'price' => 'required',
+            'price' => 'required|numeric',
             'product_description' => 'required'
         ];
 
