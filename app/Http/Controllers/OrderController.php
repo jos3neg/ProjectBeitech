@@ -8,8 +8,9 @@ use App\Product;
 use App\OrderDetail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\ApiController;
 
-class OrderController extends Controller
+class OrderController extends ApiController
 {
 /********************************************/
     public function index(Request $request)
@@ -38,8 +39,7 @@ class OrderController extends Controller
             $orders[$order->id]= Order::find($order->id);
             $orders[$order->id]["order_details"] = Order::find($order->id)->orderDetails;
         }
-
-        return response()->json(['data' => $orders, 'range' => $range],200);
+        return response()->json(['data' => $orders],200);
     }
 
 /********************************************/

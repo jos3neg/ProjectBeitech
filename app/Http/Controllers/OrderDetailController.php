@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use App\OrderDetail;
 use Illuminate\Http\Request;
+use App\Http\Controllers\ApiController;
 
-class OrderDetailController extends Controller
+class OrderDetailController extends ApiController
 {
 /********************************************/
     public function index()

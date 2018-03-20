@@ -4,14 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Customer;
 use Illuminate\Http\Request;
+use App\Http\Controllers\ApiController;
 
-class CustomerController extends Controller
+class CustomerController extends ApiController
 {
 /********************************************/
     public function index()
     {
         $customers = Customer::all();
-        return response()->json(['data' => $customers,'message' => 'Lista de Clientes'],200);
+        //return response()->json(['data' => $customers,'message' => 'Lista de Clientes'],200);
+        return $this->showAll($customers);
     }
 
 /********************************************/
@@ -28,7 +30,8 @@ class CustomerController extends Controller
         $customer->email = $request->email;
         $customer->save();
 
-        return response()->json(['data' => $customer, 'message' => 'Cliente Registrado'], 201);
+        //return response()->json(['data' => $customer, 'message' => 'Cliente Registrado'], 201);
+        return $this->showOne($customer, 201);
     }
 
 /********************************************/
@@ -36,7 +39,8 @@ class CustomerController extends Controller
     {
         $customer_find = Customer::findOrFail($customer->id);
 
-        return response()->json(['data' => $customer_find, 'message' => 'Mostrando Cliente'],200);
+        //return response()->json(['data' => $customer_find, 'message' => 'Mostrando Cliente'],200);
+        return $this->showOne($customer_find, 200);
     }
 
 /********************************************/
@@ -61,7 +65,8 @@ class CustomerController extends Controller
 
         $customer->save();
 
-        return response()->json(['data' => $customer, 'message' => 'Cliente Actualizado'] ,200);
+        //return response()->json(['data' => $customer, 'message' => 'Cliente Actualizado'] ,200);
+        return $this->showOne($customer, 200);
     }
 
 /********************************************/
@@ -69,6 +74,7 @@ class CustomerController extends Controller
     {
         $customer_find = Customer::findOrFail($customer->id);
         $customer_find->delete();
-        return response()->json(['data' => $customer_find, 'message' => 'Cliente Eliminado'], 200);
+        //return response()->json(['data' => $customer_find, 'message' => 'Cliente Eliminado'], 200);
+        return $this->showOne($customer_find, 200);
     }
 }

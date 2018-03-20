@@ -17,7 +17,10 @@ use Illuminate\Http\Request;
     return $request->user();
 });*/
 
-Route::apiResource('customers' , 'CustomerController');
-Route::apiResource('products' , 'ProductController');
-Route::post('/orders', 'OrderController@store');
-Route::post('/orders/bycustomer' , 'OrderController@index');
+
+Route::group(['middleware' => 'cors'], function(){
+	Route::apiResource('customers' , 'CustomerController');
+    Route::apiResource('products' , 'ProductController');
+    Route::post('/orders', 'OrderController@store');
+    Route::post('/orders/bycustomer' , 'OrderController@index');
+});

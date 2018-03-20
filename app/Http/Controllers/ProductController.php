@@ -4,14 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Product;
 use Illuminate\Http\Request;
+use App\Http\Controllers\ApiController;
 
-class ProductController extends Controller
+class ProductController extends ApiController
 {
 /*********************************************/
     public function index()
     {
         $products = Product::all();
-        return response()->json(['data' => $products, 'message' => 'Lista de Productos'], 200);
+        //return response()->json(['data' => $products, 'message' => 'Lista de Productos'], 200);
+        return $this->showAll($products);
     }
 
     /*********************************************/
@@ -31,8 +33,8 @@ class ProductController extends Controller
         $product->product_description = $request->product_description;
         $product->save();
 
-        return response()->json(['data' => $product,'message' => 'Producto Registrado'],200);
-        
+        //return response()->json(['data' => $product,'message' => 'Producto Registrado'],200);
+        return $this->showOne($product,200);
     }
 
 /*********************************************/
@@ -40,7 +42,8 @@ class ProductController extends Controller
     {
         $product_find = Product::findOrFail($product->id);
 
-        return response()->json(['data' => $product_find, 'message' => 'Mostrando Producto'], 200);
+        //return response()->json(['data' => $product_find, 'message' => 'Mostrando Producto'], 200);
+        return $this->showOne($product_find,200);
     }
 
 /*********************************************/
@@ -61,13 +64,15 @@ class ProductController extends Controller
         }
 
         $product->save();
-        return response()->json(['data' => $product, 'message' => 'Producto Actualizado'],200);
+        //return response()->json(['data' => $product, 'message' => 'Producto Actualizado'],200);
+        return $this->showOne($product,200);
     }
 
 /*********************************************/
     public function destroy(Product $product)
     {
         $product->delete();
-        return response()->json(['data' => $product, 'message' => 'Producto Eliminado'],200);
+        //return response()->json(['data' => $product, 'message' => 'Producto Eliminado'],200);
+        return $this->showOne($product,200);
     }
 }
